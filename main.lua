@@ -48,10 +48,9 @@ local function print_screen(...)
     print()
 
     local screen = table.pack(...)
-    screen.n = nil
 
-    for _, str in pairs(screen) do
-        print(str)
+    for i = 1, screen.n do
+        print(screen[i])
     end
 
     print()
