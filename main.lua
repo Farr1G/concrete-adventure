@@ -27,24 +27,45 @@ local function print_divisor()
     print(COLORS.DIM..string.rep("=", 50)..COLORS.RESET)
 end
 
-local function print_info_message(message)
-    print(COLORS.YELLOW.."\n"..message..COLORS.RESET)
+local function print_info_message(str)
+    print(COLORS.YELLOW.."\n"..str..COLORS.RESET)
+end
+
+local function print_screen(...)
+    clear_screen()
+    print_divisor()
+    print()
+
+    local screen = table.pack(...)
+    screen.n = nil
+
+    for _, str in pairs(screen) do
+        print(str)
+    end
+
+    print()
+    print_divisor()
 end
 
 -- MAIN MENU
 
 local handleMainMenuOptions = {}
 
+handleMainMenuOptions[3] = function ()
+    print_screen(
+        "Настройки",
+        "Ещё не добавлено"
+    )
+
+    print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
+    wait_for_input()
+end
+
 handleMainMenuOptions[4] = function ()
-    clear_screen()
-    print_divisor()
-    print()
-
-    print("Бетонное приключение")
-    print([=[— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле.]=])
-
-    print()
-    print_divisor()
+    print_screen(
+        "Бетонное приключение",
+        "— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле."
+    )
 
     print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
     wait_for_input()
@@ -56,21 +77,16 @@ handleMainMenuOptions[5] = function ()
 end
 
 local function print_main_menu_options()
-    clear_screen()
-    print_divisor()
-    print()
+    print_screen(
+        "Бетонное приключение "..COLORS.YELLOW.."[В разработке]"..COLORS.RESET,
+        "Сделано Платоном Акуловым",
 
-    print("Бетонное приключение "..COLORS.YELLOW.."[В разработке]"..COLORS.RESET)
-    print("Сделано Платоном Акуловым")
-
-    print("\n1. Новая игра")
-    print("2. Загрузить сохранение")
-    print("3. Настройки")
-    print("4. Об игре")
-    print("5. Выйти")
-
-    print()
-    print_divisor()
+        "\n1. Новая игра",
+        "2. Загрузить сохранение",
+        "3. Настройки",
+        "4. Об игре",
+        "5. Выйти"
+    )
 end
 
 local function PrintMainMenu()
