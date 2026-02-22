@@ -1,6 +1,5 @@
 -- load modules
-
--- variables
+-- …
 
 -- Redo by using https://github.com/hoelzro/lua-term
 -- http://lua-users.org/wiki/AnsiTerminalColors
@@ -28,11 +27,18 @@ local function print_divisor()
     print(COLORS.DIM..string.rep("=", 50)..COLORS.RESET)
 end
 
--- TODO: Add logic
-local function PrintMenu()
+local function print_info_message(message)
+    print(COLORS.YELLOW.."\n"..message..COLORS.RESET)
+end
+
+-- MAIN MENU
+
+local handleMainMenuOptions = {}
+
+local function PrintMainMenuOptions()
     clear_screen()
     print_divisor()
-    print("")
+    print()
 
     print("Бетонное приключение "..COLORS.YELLOW.."[В разработке]"..COLORS.RESET)
     print("Сделано Платоном Акуловым")
@@ -43,18 +49,45 @@ local function PrintMenu()
     print("4. Об игре")
     print("5. Выйти")
 
-    print("")
+    print()
     print_divisor()
 end
 
-local chosenOption = 0
-while true do
-    PrintMenu()
-    chosenOption = tonumber(wait_for_input())
+local function PrintMainMenu()
+    local chosenOption = 0
+    
+    while true do
+        PrintMainMenuOptions()
+        chosenOption = tonumber(wait_for_input())
 
-    -- Just a test
-    if chosenOption == 1 then
-        print("Loading...")
-        break
+        if handleMainMenuOptions[chosenOption] ~= nil then
+            break
+        end
     end
+
+    handleMainMenuOptions[chosenOption]()
 end
+
+handleMainMenuOptions[4] = function ()
+    clear_screen()
+    print_divisor()
+    print()
+
+    print("Бетонное приключение")
+    print([=[— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле.]=])
+
+    print()
+    print_divisor()
+
+    print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
+    wait_for_input()
+
+    PrintMainMenu()
+end
+
+handleMainMenuOptions[5] = function ()
+    clear_screen()
+    os.execute("exit")
+end
+
+PrintMainMenu()
