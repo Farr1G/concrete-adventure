@@ -35,7 +35,27 @@ end
 
 local handleMainMenuOptions = {}
 
-local function PrintMainMenuOptions()
+handleMainMenuOptions[4] = function ()
+    clear_screen()
+    print_divisor()
+    print()
+
+    print("Бетонное приключение")
+    print([=[— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле.]=])
+
+    print()
+    print_divisor()
+
+    print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
+    wait_for_input()
+end
+
+handleMainMenuOptions[5] = function ()
+    clear_screen()
+    os.exit()
+end
+
+local function print_main_menu_options()
     clear_screen()
     print_divisor()
     print()
@@ -54,40 +74,19 @@ local function PrintMainMenuOptions()
 end
 
 local function PrintMainMenu()
-    local chosenOption = 0
-    
     while true do
-        PrintMainMenuOptions()
-        chosenOption = tonumber(wait_for_input())
+        print_main_menu_options()
 
-        if handleMainMenuOptions[chosenOption] ~= nil then
-            break
+        local choice = tonumber(wait_for_input())
+        local handler = handleMainMenuOptions[choice]
+
+        if handler then
+            handler()
+        else
+            -- print_info_message("Неверный ввод")
+            -- TODO: Find a wait module
         end
     end
-
-    handleMainMenuOptions[chosenOption]()
-end
-
-handleMainMenuOptions[4] = function ()
-    clear_screen()
-    print_divisor()
-    print()
-
-    print("Бетонное приключение")
-    print([=[— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле.]=])
-
-    print()
-    print_divisor()
-
-    print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
-    wait_for_input()
-
-    PrintMainMenu()
-end
-
-handleMainMenuOptions[5] = function ()
-    clear_screen()
-    os.execute("exit")
 end
 
 PrintMainMenu()
