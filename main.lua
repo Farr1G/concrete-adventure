@@ -1,3 +1,6 @@
+---Main game module
+---Launches game menu and (in the future) will handle game logic
+
 -- load modules
 -- …
 
@@ -14,23 +17,31 @@ local COLORS = {
     RESET = "\27[0m",
 }
 
+---Clears the screen
 local function clear_screen()
     os.execute("clear")
 end
 
+---Prints `>`, waits for user to type something and then returns it
+---@return string
 local function wait_for_input()
     io.write(COLORS.YELLOW.."\n> "..COLORS.RESET); io.flush()
     return io.read()
 end
 
+---Prints a line of `=`
 local function print_divisor()
     print(COLORS.DIM..string.rep("=", 50)..COLORS.RESET)
 end
 
+---Prints colored message
+---@param str string
 local function print_info_message(str)
     print(COLORS.YELLOW.."\n"..str..COLORS.RESET)
 end
 
+---Clears the screen and prints fancy formated strings
+---@param ... string
 local function print_screen(...)
     clear_screen()
     print_divisor()
@@ -49,6 +60,7 @@ end
 
 -- MAIN MENU
 
+---@type table<integer, function>
 local handleMainMenuOptions = {}
 
 handleMainMenuOptions[3] = function ()
@@ -76,6 +88,7 @@ handleMainMenuOptions[5] = function ()
     os.exit()
 end
 
+---Prints main menu options to inform user
 local function print_main_menu_options()
     print_screen(
         "Бетонное приключение "..COLORS.YELLOW.."[В разработке]"..COLORS.RESET,
@@ -89,6 +102,7 @@ local function print_main_menu_options()
     )
 end
 
+---Prints main menu options and handles user input
 local function PrintMainMenu()
     while true do
         print_main_menu_options()
