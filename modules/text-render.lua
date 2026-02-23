@@ -57,7 +57,8 @@ end
 ---Handles choice from numbered variants
 ---@param optionsText string
 ---@param handleOptions table<integer, function>
-function TextRender.make_numbered_choise(optionsText, handleOptions)
+---@param breakAfterHandling? boolean
+function TextRender.make_numbered_choise(optionsText, handleOptions, breakAfterHandling)
     while true do
         TextRender.print_screen(optionsText)
 
@@ -66,6 +67,7 @@ function TextRender.make_numbered_choise(optionsText, handleOptions)
 
         if handler then
             handler()
+            if breakAfterHandling then break end
         else
             -- print_info_message("Неверный ввод")
             -- TODO: Find a wait module

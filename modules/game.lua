@@ -28,7 +28,11 @@ function Game.startNewGame()
 
     ask_player_for_name(newGameSate)
 
-    TextRender.print_screen(TextPumping.get_text("game-intro"))
+    TextRender.make_numbered_choise(
+        TextPumping.get_text("game-intro"),
+        handleIntroLookAroundOptions,
+        true
+    )
 
     -- TextRender.wait_to_continue()
 end
