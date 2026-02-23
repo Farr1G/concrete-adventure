@@ -37,7 +37,7 @@ end
 ---Returns contents of .txt file named `fileName` placed in `texts` folder
 ---@param fileName string
 ---@return string
-function TextPumping.get_text(fileName)
+function TextPumping.GetText(fileName)
     local file = assert(io.open(pathPrefix..fileName..pathPostfix, "r"))
 
     local text = file:read("a")

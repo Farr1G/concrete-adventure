@@ -17,7 +17,7 @@ local GameState = {}
 ---Creates new GameState for later editing, saving and loading
 ---@param properties? GameStateProperties
 ---@return GameState
-function GameState:new(properties)
+function GameState:New(properties)
     properties = properties or {}
 
     local instance = {
@@ -34,7 +34,7 @@ end
 
 ---Changes properties of GameState
 ---@param properties GameStateProperties
-function GameState:change_properties(properties)
+function GameState:ChangeProperties(properties)
     for property, value in pairs(properties) do
         self[property] = value
     end

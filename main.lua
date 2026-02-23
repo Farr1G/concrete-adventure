@@ -15,30 +15,30 @@ local handleMainMenuOptions = {}
 
 -- REDO in corutines
 handleMainMenuOptions[1] = function ()
-    Game.startNewGame()
+    Game.StartNewGame()
 end
 
 handleMainMenuOptions[3] = function ()
-    TextRender.print_screen(TextPumping.get_text("main-menu/settings"))
+    TextRender.PrintScreen(TextPumping.GetText("main-menu/settings"))
 
-    TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
-    TextRender.wait_for_input()
+    TextRender.PrintInfoMessage("Чтобы вернуться назад, нажмите любую клавишу")
+    TextRender.WaitForInput()
 end
 
 handleMainMenuOptions[4] = function ()
-    TextRender.print_screen(TextPumping.get_text("main-menu/info"))
+    TextRender.PrintScreen(TextPumping.GetText("main-menu/info"))
 
-    TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
-    TextRender.wait_for_input()
+    TextRender.PrintInfoMessage("Чтобы вернуться назад, нажмите любую клавишу")
+    TextRender.WaitForInput()
 end
 
 handleMainMenuOptions[5] = function ()
-    TextRender.clear_screen()
+    TextRender.ClearScreen()
     os.exit()
 end
 
 
-TextRender.make_numbered_choise(
-    TextPumping.get_text("main-menu/options"),
+TextRender.MakeNumberedChoice(
+    TextPumping.GetText("main-menu/options"),
     handleMainMenuOptions
 )

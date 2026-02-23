@@ -11,10 +11,10 @@ local function ask_player_for_name(gameState)
     local playerName = gameState.playerName
 
     repeat
-        TextRender.clear_screen()
-        TextRender.print_info_message("Введите имя")
+        TextRender.ClearScreen()
+        TextRender.PrintInfoMessage("Введите имя")
 
-        playerName = TextRender.wait_for_input()
+        playerName = TextRender.WaitForInput()
     until playerName
 
     gameState.playerName = playerName
@@ -24,26 +24,31 @@ end
 local handleIntroLookAroundOptions = {}
 
 handleIntroLookAroundOptions[1] = function ()
-    TextRender.print_screen(TextPumping.get_text("game/intro/look-around/walls"))
-    TextRender.wait_to_continue()
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/look-around/walls"))
+    TextRender.WaitToContinue()
 end
 
-function Game.startNewGame()
-    local newGameSate = GameState:new()
+handleIntroLookAroundOptions[2] = function ()
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/look-around/ceiling"))
+    TextRender.WaitToContinue()
+end
+
+function Game.StartNewGame()
+    local newGameSate = GameState:New()
 
     ask_player_for_name(newGameSate)
 
-    TextRender.print_screen(TextPumping.get_text("game/intro/exposition"))
-    TextRender.wait_to_continue()
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/exposition"))
+    TextRender.WaitToContinue()
 
-    TextRender.make_numbered_choise(
-        TextPumping.get_text("game/intro/look-around/options"),
+    TextRender.MakeNumberedChoice(
+        TextPumping.GetText("game/intro/look-around/options"),
         handleIntroLookAroundOptions,
         true
     )
 
-    TextRender.print_screen("Это последнее сообщение на данный момент. Сейчас тебя выкинет в главное меню.")
-    TextRender.wait_to_continue()
+    TextRender.PrintScreen("Это последнее сообщение на данный момент. Сейчас тебя выкинет в главное меню.")
+    TextRender.WaitToContinue()
 end
 
 return Game
