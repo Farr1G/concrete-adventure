@@ -4,6 +4,7 @@
 -- load modules
 local ColorsList = require("modules.colors-list")
 local TextRender = require("modules.text-render")
+local TextPumping = require("modules.text-pumping")
 
 -- MAIN MENU
 
@@ -37,16 +38,18 @@ end
 
 ---Prints main menu options to inform user
 local function print_main_menu_options()
-    TextRender.print_screen(
-        "Бетонное приключение "..ColorsList.YELLOW.."[В разработке]"..ColorsList.RESET,
-        "Сделано Платоном Акуловым",
+    -- TextRender.print_screen(
+    --     "Бетонное приключение "..ColorsList.YELLOW.."[В разработке]"..ColorsList.RESET,
+    --     "Сделано Платоном Акуловым",
 
-        "\n1. Новая игра",
-        "2. Загрузить сохранение",
-        "3. Настройки",
-        "4. Об игре",
-        "5. Выйти"
-    )
+    --     "\n1. Новая игра",
+    --     "2. Загрузить сохранение",
+    --     "3. Настройки",
+    --     "4. Об игре",
+    --     "5. Выйти"
+    -- )
+
+    TextRender.print_screen(TextPumping.get_text("main-menu-options"))
 end
 
 ---Prints main menu options and handles user input
