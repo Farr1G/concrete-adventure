@@ -1,0 +1,2 @@
+This is test message,
+which was created for testing `text-pumping.lua` functioning
