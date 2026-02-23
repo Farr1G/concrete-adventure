@@ -37,26 +37,8 @@ handleMainMenuOptions[5] = function ()
     os.exit()
 end
 
----Prints main menu options to inform user
-local function print_main_menu_options()
-    TextRender.print_screen(TextPumping.get_text("main-menu-options"))
-end
 
----Prints main menu options and handles user input
-local function PrintMainMenu()
-    while true do
-        print_main_menu_options()
-
-        local choice = tonumber(TextRender.wait_for_input())
-        local handler = handleMainMenuOptions[choice]
-
-        if handler then
-            handler()
-        else
-            -- print_info_message("Неверный ввод")
-            -- TODO: Find a wait module
-        end
-    end
-end
-
-PrintMainMenu()
+TextRender.make_numbered_choise(
+    TextPumping.get_text("main-menu"),
+    handleMainMenuOptions
+)
