@@ -12,20 +12,14 @@ local TextPumping = require("modules.text-pumping")
 local handleMainMenuOptions = {}
 
 handleMainMenuOptions[3] = function ()
-    TextRender.print_screen(
-        "Настройки",
-        "Ещё не добавлено"
-    )
+    TextRender.print_screen(TextPumping.get_text("main-menu-settings"))
 
     TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
     TextRender.wait_for_input()
 end
 
 handleMainMenuOptions[4] = function ()
-    TextRender.print_screen(
-        "Бетонное приключение",
-        "— это короткое текстовое приключение-квест про попытку пройти через подземную станцию метрополитена, имеющую крайне высокие потолки, сделанную в основном из бетона, в несколько бруталистском стиле."
-    )
+    TextRender.print_screen(TextPumping.get_text("main-menu-info"))
 
     TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
     TextRender.wait_for_input()
@@ -38,17 +32,6 @@ end
 
 ---Prints main menu options to inform user
 local function print_main_menu_options()
-    -- TextRender.print_screen(
-    --     "Бетонное приключение "..ColorsList.YELLOW.."[В разработке]"..ColorsList.RESET,
-    --     "Сделано Платоном Акуловым",
-
-    --     "\n1. Новая игра",
-    --     "2. Загрузить сохранение",
-    --     "3. Настройки",
-    --     "4. Об игре",
-    --     "5. Выйти"
-    -- )
-
     TextRender.print_screen(TextPumping.get_text("main-menu-options"))
 end
 
