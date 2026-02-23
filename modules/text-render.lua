@@ -48,4 +48,10 @@ function TextRender.print_screen(...)
     TextRender.print_divisor()
 end
 
+---Invites user to input any key to continue
+function TextRender.wait_to_continue()
+    TextRender.print_info_message("Чтобы продолжить, нажмите любую клавишу")
+    TextRender.wait_for_input()
+end
+
 return TextRender
