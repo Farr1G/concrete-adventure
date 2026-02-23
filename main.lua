@@ -19,14 +19,14 @@ handleMainMenuOptions[1] = function ()
 end
 
 handleMainMenuOptions[3] = function ()
-    TextRender.print_screen(TextPumping.get_text("main-menu-settings"))
+    TextRender.print_screen(TextPumping.get_text("main-menu/settings"))
 
     TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
     TextRender.wait_for_input()
 end
 
 handleMainMenuOptions[4] = function ()
-    TextRender.print_screen(TextPumping.get_text("main-menu-info"))
+    TextRender.print_screen(TextPumping.get_text("main-menu/info"))
 
     TextRender.print_info_message("Чтобы вернуться назад, нажмите любую клавишу")
     TextRender.wait_for_input()
@@ -39,6 +39,6 @@ end
 
 
 TextRender.make_numbered_choise(
-    TextPumping.get_text("main-menu"),
+    TextPumping.get_text("main-menu/options"),
     handleMainMenuOptions
 )

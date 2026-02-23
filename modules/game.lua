@@ -23,18 +23,26 @@ end
 ---@type table<integer, function>
 local handleIntroLookAroundOptions = {}
 
+handleIntroLookAroundOptions[1] = function ()
+    TextRender.print_screen(TextPumping.get_text("game/intro/look-around/walls"))
+    TextRender.wait_to_continue()
+end
+
 function Game.startNewGame()
     local newGameSate = GameState:new()
 
     ask_player_for_name(newGameSate)
 
+    TextRender.print_screen(TextPumping.get_text("game/intro/exposition"))
+
     TextRender.make_numbered_choise(
-        TextPumping.get_text("game-intro"),
+        TextPumping.get_text("game/intro/look-around/options"),
         handleIntroLookAroundOptions,
         true
     )
 
-    -- TextRender.wait_to_continue()
+    TextRender.print_screen("Это последнее сообщение на данный момент. Сейчас тебя выкинет в главное меню.")
+    TextRender.wait_to_continue()
 end
 
 return Game
