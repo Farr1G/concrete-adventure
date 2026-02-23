@@ -20,16 +20,17 @@ local function ask_player_for_name(gameState)
     gameState.playerName = playerName
 end
 
----@type table<string, function>
-local handleStages = {}
+---@type table<integer, function>
+local handleIntroLookAroundOptions = {}
 
 function Game.startNewGame()
     local newGameSate = GameState:new()
 
     ask_player_for_name(newGameSate)
 
-    print(newGameSate.playerName)
-    TextRender.wait_for_input()
+    TextRender.print_screen(TextPumping.get_text("game-intro"))
+
+    -- TextRender.wait_to_continue()
 end
 
 return Game

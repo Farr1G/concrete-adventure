@@ -54,4 +54,23 @@ function TextRender.wait_to_continue()
     TextRender.wait_for_input()
 end
 
+---Handles choice from numbered variants
+---@param optionsText string
+---@param handleOptions table<integer, function>
+function TextRender.make_numbered_choise(optionsText, handleOptions)
+    while true do
+        TextRender.print_screen(optionsText)
+
+        local choice = tonumber(TextRender.wait_for_input())
+        local handler = handleOptions[choice]
+
+        if handler then
+            handler()
+        else
+            -- print_info_message("Неверный ввод")
+            -- TODO: Find a wait module
+        end
+    end
+end
+
 return TextRender
