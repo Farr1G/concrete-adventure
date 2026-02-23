@@ -34,6 +34,7 @@ function Game.startNewGame()
     ask_player_for_name(newGameSate)
 
     TextRender.print_screen(TextPumping.get_text("game/intro/exposition"))
+    TextRender.wait_to_continue()
 
     TextRender.make_numbered_choise(
         TextPumping.get_text("game/intro/look-around/options"),
