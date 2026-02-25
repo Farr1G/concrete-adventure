@@ -33,6 +33,27 @@ handleIntroLookAroundOptions[2] = function ()
     TextRender.WaitToContinue()
 end
 
+handleIntroLookAroundOptions[3] = function ()
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/look-around/phone"))
+    TextRender.WaitToContinue()
+end
+
+handleIntroLookAroundOptions[4] = function ()
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/look-around/bottom"))
+    TextRender.WaitToContinue()
+end
+
+---@type table<integer, function>
+local handleIntroCafeOptions = {}
+
+handleIntroCafeOptions[1] = function ()
+    
+end
+
+handleIntroCafeOptions[2] = function ()
+    
+end
+
 function Game.StartNewGame()
     local newGameSate = GameState:New()
 
@@ -44,6 +65,15 @@ function Game.StartNewGame()
     TextRender.MakeNumberedChoice(
         TextPumping.GetText("game/intro/look-around/options"),
         handleIntroLookAroundOptions,
+        true
+    )
+
+    TextRender.PrintScreen(TextPumping.GetText("game/intro/arrived-to-bottom"))
+    TextRender.WaitToContinue()
+
+    TextRender.MakeNumberedChoice(
+        TextPumping.GetText("game/intro/cafe/options"),
+        handleIntroCafeOptions,
         true
     )
 
